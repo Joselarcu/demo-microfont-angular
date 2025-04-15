@@ -57,3 +57,46 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+##Steps to create this project
+
+1. Create empty workspace
+
+```bash
+ng new demo-microfront-angular --create-application=false
+```
+
+2. Create host application
+```bash
+ng generate application shell --style=scss --routing=true
+```
+
+3.Create remote application 1
+```bash
+ng generate application payment --style=scss
+```
+
+4.Create remote application 2
+```bash
+ng generate application shopping --style=scss --routing=true
+```
+
+5. Install module federation
+```bash
+npm i @angular-architects/module-federation -D 
+```
+
+6. select host project with module-federation
+```bash
+ng add @angular-architects/module-federation --project shell --port 4200 --type host
+```
+
+7. Select remote projects with module-federation
+```bash
+ng add @angular-architects/module-federation --project shopping --port 4201 --type remote
+```
+
+7. Select remote projects with module-federation
+```bash
+ng add @angular-architects/module-federation --project payment --port 4202 --type remote
+```
